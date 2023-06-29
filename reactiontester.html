@@ -1,0 +1,41 @@
+<html>
+    <head>
+
+        <title>Reaction-Tester</title>
+
+        <Style type="text/css">
+        
+            #shape {
+
+                width: 200px;
+                height: 200px;
+                background-color: red;
+            }
+        
+        </Style>
+
+    </head>
+
+    <body>
+
+        <div id="shape"></div>
+
+        <script type="text/javascript">
+
+            var start = Math.floor(Date.now() / 1000);
+            document.getElementById("shape").onclick = function () {
+                var end = Math.floor(Date.now() / 1000);
+
+                var timePassed = end - start;
+
+                alert("It took you " + timePassed + " Seconds to click on Shape!")
+
+                document.getElementById("shape").style.display = "none";
+            }
+
+
+        </script>
+
+
+    </body>
+</html>
