@@ -10,6 +10,7 @@
                 width: 200px;
                 height: 200px;
                 background-color: red;
+                display: none;
             }
         
         </Style>
@@ -17,20 +18,57 @@
     </head>
 
     <body>
-
+        <p >Time Taken: <span id="taken"></span></p>
         <div id="shape"></div>
 
         <script type="text/javascript">
+             var start = Math.floor(Date.now() / 1000);
 
-            var start = Math.floor(Date.now() / 1000);
+            function appearingShape() {
+
+                var to = Math.random() * 400;
+
+                var lef = Math.random() * 400;
+
+                var widt = Math.random() * 400;
+
+                
+                document.getElementById("shape").style.width = widt + "px";
+
+                document.getElementById("shape").style.height = widt + "px";
+
+                document.getElementById("shape").style.top = to + "px";
+
+                document.getElementById("shape").style.left = lef + "px";
+
+
+                document.getElementById("shape").style.display = "block";
+                
+                
+            }
+
+            function appearAfter(){
+
+            setTimeout(appearingShape, Math.random() * 3000);
+            }
+
+            appearAfter();
+           
             document.getElementById("shape").onclick = function () {
+                 document.getElementById("shape").style.display = "none";
                 var end = Math.floor(Date.now() / 1000);
 
                 var timePassed = end - start;
 
-                alert("It took you " + timePassed + " Seconds to click on Shape!")
 
-                document.getElementById("shape").style.display = "none";
+                document.getElementById("taken").innerHTML = timePassed +"s";
+
+                appearAfter();
+
+                
+
+             
+               
             }
 
 
