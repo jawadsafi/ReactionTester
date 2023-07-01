@@ -11,6 +11,7 @@
                 height: 200px;
                 background-color: red;
                 display: none;
+                position: relative;
             }
         
         </Style>
@@ -18,11 +19,28 @@
     </head>
 
     <body>
+        <h1>Reaction Tester</h1>
         <p >Time Taken: <span id="taken"></span></p>
         <div id="shape"></div>
 
         <script type="text/javascript">
              var start = Math.floor(Date.now() / 1000);
+
+
+             function randomColors() {
+
+
+                var letters = '0123456789ABCDEF'.split('');
+                
+                var color = '#';
+
+                for (var i = 0;  i < 6; i++){
+
+                    color += letters[Math.floor(Math.random() *16)];
+                }
+
+                return color;
+             }
 
             function appearingShape() {
 
@@ -30,8 +48,20 @@
 
                 var lef = Math.random() * 400;
 
-                var widt = Math.random() * 400;
+                var widt = (Math.random() * 200) + 100;
 
+                if (Math.random() > 0.5) {
+
+                    document.getElementById("shape").style.borderRadius = "50%";
+                }
+
+                else {
+
+                    document.getElementById("shape").style.borderRadius = "0";
+                    
+                }
+
+                document.getElementById("shape").style.backgroundColor = randomColors ();
                 
                 document.getElementById("shape").style.width = widt + "px";
 
@@ -43,6 +73,9 @@
 
 
                 document.getElementById("shape").style.display = "block";
+
+                start = Math.floor(Date.now() / 1000);
+
                 
                 
             }
